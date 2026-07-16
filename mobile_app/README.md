@@ -28,6 +28,16 @@ npx expo start
 
 Scan the QR code with Expo Go (Android) or the Camera app (iOS) on a device connected to the **same network** as the dev machine. Make sure Windows Firewall allows inbound connections on port 8000 (Laravel) and 8081 (Metro).
 
+### Expo Go SDK compatibility
+
+This project is pinned to **Expo SDK 54** on purpose, not the newest SDK. The Expo Go app on the Play
+Store/App Store only ever supports the current-and-recent SDKs — pinning newer than what Expo Go
+actually ships gives an "Project is incompatible with this version of Expo Go" error with no fix
+except downgrading. If you ever bump the `expo` package, run `npx expo install --fix` immediately
+after so every `expo-*`/`react-native` package stays aligned, and check
+`https://exp.host/--/api/v2/versions` (the `expoGoSdkVersion` field) for the SDK the public Expo Go
+build currently supports before upgrading.
+
 ## What it does
 
 - `app/login.tsx` — invigilator logs in with email/password (issues a Sanctum token, stored via `expo-secure-store`).
