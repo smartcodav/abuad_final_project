@@ -13,7 +13,7 @@ Route::middleware(['auth'])->group(function () {
 
         return match (true) {
             $user->isAdmin() => to_route('admin.dashboard'),
-            $user->isStudent() => to_route('student.dashboard'),
+            $user->isStudent() => to_route('student.home'),
             default => Inertia::render('dashboard'),
         };
     })->name('dashboard');
@@ -22,3 +22,4 @@ Route::middleware(['auth'])->group(function () {
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
+require __DIR__.'/student.php';
