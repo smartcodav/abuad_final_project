@@ -1,6 +1,6 @@
 import { useAuth } from '../context/auth-context';
 import { useState } from 'react';
-import { ActivityIndicator, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 
 export default function LoginScreen() {
     const { login } = useAuth();

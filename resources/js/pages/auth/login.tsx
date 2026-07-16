@@ -1,3 +1,4 @@
+import { type FormDataConvertible } from '@inertiajs/core';
 import { Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import { FormEventHandler } from 'react';
@@ -14,6 +15,7 @@ interface LoginForm {
     email: string;
     password: string;
     remember: boolean;
+    [key: string]: FormDataConvertible;
 }
 
 interface LoginProps {

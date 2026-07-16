@@ -124,7 +124,6 @@ export default function FaceCapture() {
                         <>
                             <div className="relative aspect-video w-full max-w-md overflow-hidden rounded-md border bg-muted">
                                 {captureState !== 'captured' && captureState !== 'submitting' ? (
-                                    // eslint-disable-next-line jsx-a11y/media-has-caption
                                     <video ref={videoRef} autoPlay muted playsInline className="h-full w-full object-cover" />
                                 ) : (
                                     previewUrl && <img src={previewUrl} alt="Captured face" className="h-full w-full object-cover" />

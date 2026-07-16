@@ -1,4 +1,5 @@
 import { api, FaceCheckResult } from '../../../../../lib/api';
+import axios from 'axios';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useRef, useState } from 'react';
@@ -60,8 +61,9 @@ export default function CaptureScreen() {
 
             setResult(response.data);
             setStage('result');
-        } catch (err: any) {
-            setError(err?.response?.data?.message ?? 'Could not verify the photo. Please try again.');
+        } catch (err) {
+            const message = axios.isAxiosError(err) ? (err.response?.data as { message?: string } | undefined)?.message : undefined;
+            setError(message ?? 'Could not verify the photo. Please try again.');
             setStage('camera');
         }
     };
