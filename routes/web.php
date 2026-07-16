@@ -9,9 +9,16 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
+        $user = request()->user();
+
+        return match (true) {
+            $user->isAdmin() => to_route('admin.dashboard'),
+            $user->isStudent() => to_route('student.dashboard'),
+            default => Inertia::render('dashboard'),
+        };
     })->name('dashboard');
 });
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
