@@ -29,6 +29,7 @@ class OnboardingController extends Controller
                 'gender' => $student->gender,
                 'dateOfBirth' => $student->date_of_birth?->format('Y-m-d'),
             ]),
+            4 => Inertia::render('student/onboarding/step-4-face-capture'),
             default => abort(404),
         };
     }

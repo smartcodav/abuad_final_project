@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Student\FaceCaptureController;
 use App\Http\Controllers\Student\OnboardingController;
 use App\Http\Controllers\Student\PasswordChangeController;
 use App\Http\Controllers\Student\StudentAuthController;
@@ -26,5 +27,6 @@ Route::middleware(['auth', 'role:student'])->prefix('student')->name('student.')
         Route::post('onboarding/step-1', [OnboardingController::class, 'storeIdentityConfirmation'])->name('onboarding.step1.store');
         Route::post('onboarding/step-2', [OnboardingController::class, 'storeEmail'])->name('onboarding.step2.store');
         Route::post('onboarding/step-3', [OnboardingController::class, 'storeDemographics'])->name('onboarding.step3.store');
+        Route::post('onboarding/step-4', [FaceCaptureController::class, 'store'])->name('onboarding.step4.store');
     });
 });
