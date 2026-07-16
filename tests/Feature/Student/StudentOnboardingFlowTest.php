@@ -1,32 +1,7 @@
 <?php
 
-use App\Enums\UserRole;
-use App\Models\Department;
-use App\Models\School;
-use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
-function makeStudent(): Student
-{
-    $school = School::create(['name' => 'Test School', 'code' => 'TS']);
-    $department = Department::create(['school_id' => $school->id, 'name' => 'Test Department', 'code' => 'TD']);
-
-    $user = User::create([
-        'name' => 'Test Student',
-        'email' => 'test-student@students.pending',
-        'matric_number' => 'TD/2021/999',
-        'password' => Hash::make('1234567'),
-        'role' => UserRole::Student,
-        'must_change_password' => true,
-    ]);
-
-    return $user->student()->create([
-        'department_id' => $department->id,
-        'level' => 200,
-        'onboarding_step' => 0,
-    ]);
-}
 
 it('logs a student in with matric number and forces a password change', function () {
     $student = makeStudent();

@@ -41,7 +41,23 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function makeStudent(): App\Models\Student
 {
-    // ..
+    $school = App\Models\School::create(['name' => 'Test School '.uniqid(), 'code' => 'TS'.uniqid()]);
+    $department = App\Models\Department::create(['school_id' => $school->id, 'name' => 'Test Department', 'code' => 'TD']);
+
+    $user = App\Models\User::create([
+        'name' => 'Test Student',
+        'email' => 'test-student-'.uniqid().'@students.pending',
+        'matric_number' => 'TD/2021/'.random_int(1000, 9999),
+        'password' => Illuminate\Support\Facades\Hash::make('1234567'),
+        'role' => App\Enums\UserRole::Student,
+        'must_change_password' => true,
+    ]);
+
+    return $user->student()->create([
+        'department_id' => $department->id,
+        'level' => 200,
+        'onboarding_step' => 0,
+    ]);
 }

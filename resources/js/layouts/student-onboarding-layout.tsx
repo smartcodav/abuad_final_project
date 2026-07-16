@@ -13,7 +13,7 @@ const STEPS = [
 export default function StudentOnboardingLayout({ step, children }: { step: number; children: ReactNode }) {
     return (
         <div className="mx-auto flex min-h-svh w-full max-w-2xl flex-col gap-8 p-6">
-            <ol className="flex flex-wrap items-center gap-x-2 gap-y-3 text-sm">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-3 text-sm print:hidden">
                 {STEPS.map((item, index) => (
                     <li key={item.step} className="flex items-center gap-2">
                         <span

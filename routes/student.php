@@ -28,5 +28,7 @@ Route::middleware(['auth', 'role:student'])->prefix('student')->name('student.')
         Route::post('onboarding/step-2', [OnboardingController::class, 'storeEmail'])->name('onboarding.step2.store');
         Route::post('onboarding/step-3', [OnboardingController::class, 'storeDemographics'])->name('onboarding.step3.store');
         Route::post('onboarding/step-4', [FaceCaptureController::class, 'store'])->name('onboarding.step4.store');
+        Route::post('onboarding/step-5', [OnboardingController::class, 'storeCourseRegistration'])->name('onboarding.step5.store');
+        Route::post('onboarding/complete', [OnboardingController::class, 'complete'])->name('onboarding.complete');
     });
 });
