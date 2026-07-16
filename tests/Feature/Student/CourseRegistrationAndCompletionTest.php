@@ -3,19 +3,6 @@
 use App\Models\AcademicSession;
 use App\Models\Course;
 
-function completeStudentThroughStep4(): \App\Models\Student
-{
-    $student = makeStudent();
-    $student->user->update(['must_change_password' => false]);
-    $student->update([
-        'onboarding_step' => 4,
-        'passport_photo_path' => 'students/passports/example.jpg',
-        'face_descriptor' => array_fill(0, 128, 0.1),
-    ]);
-
-    return $student;
-}
-
 it('lets a student register for courses matching their department and level', function () {
     $student = completeStudentThroughStep4();
 

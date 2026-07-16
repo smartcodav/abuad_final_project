@@ -61,3 +61,28 @@ function makeStudent(): App\Models\Student
         'onboarding_step' => 0,
     ]);
 }
+
+function completeStudentThroughStep4(): App\Models\Student
+{
+    $student = makeStudent();
+    $student->user->update(['must_change_password' => false]);
+    $student->update([
+        'onboarding_step' => 4,
+        'passport_photo_path' => 'students/passports/example.jpg',
+        'face_descriptor' => array_fill(0, 128, 0.1),
+    ]);
+
+    return $student;
+}
+
+function makeInvigilator(string $password = 'password123'): App\Models\Invigilator
+{
+    $user = App\Models\User::create([
+        'name' => 'Test Invigilator',
+        'email' => 'invigilator-'.uniqid().'@example.com',
+        'password' => Illuminate\Support\Facades\Hash::make($password),
+        'role' => App\Enums\UserRole::Invigilator,
+    ]);
+
+    return $user->invigilator()->create(['phone' => null]);
+}

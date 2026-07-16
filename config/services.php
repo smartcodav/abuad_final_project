@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'face_service' => [
+        'url' => env('FACE_SERVICE_URL', 'http://127.0.0.1:4001'),
+        'match_distance_threshold' => (float) env('FACE_MATCH_DISTANCE_THRESHOLD', 0.6),
+    ],
+
 ];
