@@ -1,0 +1,9 @@
+{
+  "name": "chapter-4-docx-converter",
+  "private": true,
+  "description": "Regenerates chapter-4.docx from chapter-4.md — see README.md",
+  "dependencies": {
+    "marked": "^18.0.6",
+    "html-to-docx": "^1.8.0"
+  }
+}
